@@ -29,3 +29,6 @@
   prune = true
 [include]
   path = ~/.gitconfig.local
+[user]
+	name = Vo Anh Duy
+	email = voanhduy1512@live.com
