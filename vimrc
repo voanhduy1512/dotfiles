@@ -161,3 +161,17 @@ set diffopt+=vertical
 if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
 endif
+
+" powerline
+let g:airline_powerline_fonts = 1
+
+" Nerdtree
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+map <C-n> :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+" shortcut
+map <Leader>i mmgg=G`m<CR>
+map <Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
+map <Leader>d obinding.pry<esc>:w<cr>
