@@ -13,6 +13,9 @@ set history=50
 set ruler         " show the cursor position all the time
 set showcmd       " display incomplete commands
 set incsearch     " do incremental searching
+set hlsearch      " highlight all matches
+set ignorecase
+set smartcase
 set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
 
@@ -31,7 +34,7 @@ filetype plugin indent on
 augroup vimrcEx
   autocmd!
 
-  " When editing a file, always jump to the last known cursor position.
+        " When editing a file, always jump to the last known cursor position.
   " Don't do it for commit messages, when the position is invalid, or when
   " inside an event handler (happens when dropping a file on gvim).
   autocmd BufReadPost *
@@ -92,7 +95,7 @@ set textwidth=80
 set colorcolumn=+1
 
 " Numbers
-set number
+set relativenumber
 set numberwidth=5
 
 " Tab completion
@@ -175,3 +178,11 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 map <Leader>i mmgg=G`m<CR>
 map <Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
 map <Leader>d obinding.pry<esc>:w<cr>
+map <Leader>h :nohlsearch<cr>
+
+" automatically rebalance windows on vim resize
+autocmd VimResized * :wincmd =
+
+" zoom a vim pane, <C-w>= to re-balance
+nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
+nnoremap <leader>= :wincmd =<cr>

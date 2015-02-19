@@ -25,12 +25,18 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
 Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-rake'
 Plugin 'vim-scripts/ctags.vim'
 Plugin 'vim-scripts/matchit.zip'
 Plugin 'vim-scripts/tComment'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/nerdtree'
+Plugin 'kana/vim-textobj-user'
+Plugin 'nelstrom/vim-textobj-rubyblock'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'christoomey/vim-tmux-runner'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local
