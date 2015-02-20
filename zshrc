@@ -96,5 +96,7 @@ _load_settings() {
 }
 _load_settings "$HOME/.zsh/configs"
 
+eval "$(hub alias -s)"
+
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
