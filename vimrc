@@ -168,11 +168,10 @@ if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
 endif
 
-" powerline
-let g:airline_powerline_fonts = 1
 
 " airline
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
 
 " Nerdtree
 autocmd StdinReadPre * let s:std_in=1
