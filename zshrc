@@ -117,3 +117,5 @@ ensure_tmux_is_running() {
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
 ensure_tmux_is_running
+
+eval "$(direnv hook zsh)"
