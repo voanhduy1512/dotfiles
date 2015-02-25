@@ -94,6 +94,15 @@ _load_settings() {
     fi
   fi
 }
+
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+eval "$(hub alias -s)"
+
+. `brew --prefix`/etc/profile.d/z.sh
+
 _load_settings "$HOME/.zsh/configs"
 
 _not_inside_tmux() { [[ -z "$TMUX" ]] }
@@ -104,9 +113,7 @@ ensure_tmux_is_running() {
   fi
 }
 
-ensure_tmux_is_running
-
-eval "$(hub alias -s)"
-
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+
+ensure_tmux_is_running
