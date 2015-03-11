@@ -83,8 +83,8 @@ endif
 
 " Color scheme
 let base16colorspace=256
-
-colorscheme base16-solarized
+set background=dark
+colorscheme base16-ocean
 highlight NonText guibg=#060606
 highlight Folded  guibg=#0A0A0A guifg=#9090D0
 
@@ -94,6 +94,10 @@ set colorcolumn=+1
 
 " vim tmux runner
 let g:VtrUseVtrMaps = 1
+
+ nmap <C-f> :VtrSendLineToRunner<cr>
+ vmap <C-f> <Esc>:VtrSendSelectedToRunner<cr>
+
 " Numbers
 set relativenumber
 set numberwidth=5
@@ -131,9 +135,12 @@ nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
 " vim-rspec mappings
+" let g:rspec_command = 'VtrOpenRunner() && VtrSendCommandToRunner {"rspec {spec}"}'
+let g:rspec_command = 'VtrSendCommand! rspec {spec}'
 nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
 nnoremap <Leader>s :call RunNearestSpec()<CR>
 nnoremap <Leader>l :call RunLastSpec()<CR>
+nnoremap <Leader>a :call RunAllSpecs()<CR>
 
 " Run commands that require an interactive shell
 nnoremap <Leader>ri :RunInInteractiveShell<space>

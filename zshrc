@@ -118,5 +118,8 @@ ensure_tmux_is_running() {
 
 ensure_tmux_is_running
 
+if which rbenv &>/dev/null ; then
+  eval "$(rbenv init -)"
+fi
+
 eval "$(direnv hook zsh)"
-eval "$(rbenv init -)"
