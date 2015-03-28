@@ -37,7 +37,6 @@ Plugin 'nelstrom/vim-textobj-rubyblock'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'christoomey/vim-tmux-runner'
 Plugin 'chriskempson/base16-vim'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'thoughtbot/vim-rspec'
 
 if filereadable(expand("~/.vimrc.bundles.local"))

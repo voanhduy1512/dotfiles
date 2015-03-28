@@ -95,7 +95,7 @@ set colorcolumn=+1
 " vim tmux runner
 let g:VtrUseVtrMaps = 1
 
- nmap <C-f> :VtrSendLineToRunner<cr>
+ nmap <C-f> :VtrSendLinesToRunner<cr>
  vmap <C-f> <Esc>:VtrSendSelectedToRunner<cr>
 
 " Numbers
