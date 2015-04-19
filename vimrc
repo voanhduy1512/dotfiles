@@ -139,11 +139,10 @@ nnoremap <Down> :echoe "Use j"<CR>
 
 " vim-rspec mappings
 " let g:rspec_command = 'VtrOpenRunner() && VtrSendCommandToRunner {"rspec {spec}"}'
-let g:rspec_command = 'VtrSendCommand! rspec {spec}'
-nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
-nnoremap <Leader>s :call RunNearestSpec()<CR>
-nnoremap <Leader>l :call RunLastSpec()<CR>
-nnoremap <Leader>a :call RunAllSpecs()<CR>
+nnoremap <Leader>rt :call RunCurrentSpecFile()<CR>
+nnoremap <Leader>rs :call RunNearestSpec()<CR>
+nnoremap <Leader>rl :call RunLastSpec()<CR>
+nnoremap <Leader>ra :call RunAllSpecs()<CR>
 
 " Run commands that require an interactive shell
 nnoremap <Leader>ri :RunInInteractiveShell<space>
