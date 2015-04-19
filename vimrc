@@ -100,7 +100,10 @@ let g:VtrUseVtrMaps = 1
 
 " Numbers
 set relativenumber
+set number
 set numberwidth=5
+
+hi CursorLineNr   term=bold ctermfg=Yellow gui=bold guifg=Yellow
 
 " Tab completion
 " will insert tab at beginning of line,
