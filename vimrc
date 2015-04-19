@@ -187,16 +187,10 @@ nnoremap } gT<CR>
 
 set wildmode=list:longest,list:full
 
-
-
-"Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
-" Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
-" Use neocomplete.
 let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
+let g:neocomplete#enable_ignore_case = 0
+let g:neocomplete#enable_camel_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
@@ -241,7 +235,7 @@ inoremap <expr><C-e>  neocomplete#cancel_popup()
 "inoremap <expr><Up>    neocomplete#close_popup() . "\<Up>"
 "inoremap <expr><Down>  neocomplete#close_popup() . "\<Down>"
 " Or set this.
-"let g:neocomplete#enable_cursor_hold_i = 1
+" let g:neocomplete#enable_cursor_hold_i = 1
 " Or set this.
 "let g:neocomplete#enable_insert_char_pre = 1
 
@@ -260,11 +254,16 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType ruby setlocal omnifunc=rubycomplete#CompleteRuby
 
 " Enable heavy omni completion.
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
 "let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 "let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 "let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
 " For perlomni.vim setting.
 " https://github.com/c9s/perlomni.vim
+let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
