@@ -117,7 +117,3 @@ ensure_tmux_is_running() {
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
 ensure_tmux_is_running
-
-if which rbenv &>/dev/null ; then
-  eval "$(rbenv init -)"
-fi

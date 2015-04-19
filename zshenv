@@ -7,9 +7,13 @@ export PATH="$HOME/.bin:$PATH"
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 
+# load rbenv if available
+if which rbenv &>/dev/null ; then
+  eval "$(rbenv init - --no-rehash)"
+fi
 
 # mkdir .git/safe in the root of repositories you trust
-# export PATH=".git/safe/../../bin:$PATH"
+export PATH=".git/safe/../../bin:$PATH"
 
 # BASE16_SHELL="$HOME/.config/base16-shell/base16-solarized.dark.sh"
 BASE16_SHELL="$HOME/.config/base16-shell/base16-ocean.dark.sh"
