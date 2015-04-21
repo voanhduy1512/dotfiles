@@ -166,7 +166,7 @@ let g:airline_powerline_fonts = 1
 " Nerdtree
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <leader>n :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " shortcut
@@ -194,3 +194,5 @@ inoremap <silent><tab> <c-r>=CleverTab#Complete('start')<cr>
                       \<c-r>=CleverTab#Complete('keyword')<cr>
                       \<c-r>=CleverTab#Complete('stop')<cr>
 inoremap <silent><s-tab> <c-r>=CleverTab#Complete('prev')<cr>
+
+let g:NumberToggleTrigger="<Leader>tn"
