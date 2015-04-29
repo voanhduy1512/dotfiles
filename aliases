@@ -1,5 +1,5 @@
 # Unix
-alias tlf="tail -f"
+alias tailf="tail -f"
 alias ln='ln -v'
 alias mkdir='mkdir -p'
 alias ...='../..'

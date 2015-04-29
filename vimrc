@@ -56,7 +56,7 @@ augroup vimrcEx
   autocmd FileType css,scss,sass setlocal iskeyword+=-
 augroup END
 
-autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1 
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 
@@ -163,12 +163,6 @@ endif
 " airline
 let g:airline_powerline_fonts = 1
 
-" Nerdtree
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-nnoremap <leader>n :NERDTreeToggle<CR>
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-
 " shortcut
 map <Leader>i mmgg=G`m<CR>
 map <Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
@@ -184,15 +178,49 @@ nnoremap <leader>= :wincmd =<cr>
 nnoremap { gt<CR>
 nnoremap } gT<CR>
 
+let g:netrw_liststyle=3
+nnoremap <leader>n :Explore<cr>
+
 set wildmode=list:longest,list:full
 
 let g:UltiSnipsExpandTrigger       = '<F5>'   " or any other key
 
+let g:NumberToggleTrigger="<Leader>tn"
+
+"Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#disable_auto_complete = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+" Define dictionary.
+let g:neocomplete#sources#dictionary#dictionaries = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scheme' : $HOME.'/.gosh_completions'
+        \ }
+
+" Define keyword.
+if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+call vimfiler#custom#profile('default', 'context', {
+       \ 'safe' : 0,
+       \ 'auto_expand' : 1,
+       \ 'parent' : 0
+       \ })
+nnoremap <leader>n :VimFilerExplorer<cr>
 inoremap <silent><tab> <c-r>=CleverTab#Complete('start')<cr>
                       \<c-r>=CleverTab#Complete('tab')<cr>
                       \<c-r>=CleverTab#Complete('ultisnips')<cr>
-                      \<c-r>=CleverTab#Complete('keyword')<cr>
-                      \<c-r>=CleverTab#Complete('stop')<cr>
+                      \<c-r>=CleverTab#Complete('neocomplete')<cr>
+                      \<c-r>=CleverTab#Complete('end')<cr>
 inoremap <silent><s-tab> <c-r>=CleverTab#Complete('prev')<cr>
-
-let g:NumberToggleTrigger="<Leader>tn"
