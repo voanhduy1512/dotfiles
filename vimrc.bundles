@@ -61,6 +61,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'voanhduy1512/vim-numbertoggle'
 Plug 'Valloric/YouCompleteMe'
 Plug 'ervandew/supertab'
+Plug 'airblade/vim-gitgutter'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local
