@@ -186,34 +186,15 @@ nnoremap <leader>n :Explore<cr>
 
 set wildmode=list:longest,list:full
 
-let g:UltiSnipsExpandTrigger       = '<F5>'   " or any other key
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 let g:NumberToggleTrigger="<Leader>tn"
-
-"Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#disable_auto_complete = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
-" Define dictionary.
-let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
-
-" Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
 call vimfiler#custom#profile('default', 'context', {
        \ 'safe' : 0,
@@ -221,9 +202,3 @@ call vimfiler#custom#profile('default', 'context', {
        \ 'parent' : 0
        \ })
 nnoremap <leader>n :VimFilerExplorer<cr>
-inoremap <silent><tab> <c-r>=CleverTab#Complete('start')<cr>
-                      \<c-r>=CleverTab#Complete('tab')<cr>
-                      \<c-r>=CleverTab#Complete('ultisnips')<cr>
-                      \<c-r>=CleverTab#Complete('neocomplete')<cr>
-                      \<c-r>=CleverTab#Complete('end')<cr>
-inoremap <silent><s-tab> <c-r>=CleverTab#Complete('prev')<cr>

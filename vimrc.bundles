@@ -57,10 +57,10 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimfiler.vim'
-Plug 'Shougo/neocomplete.vim'
-Plug 'voanhduy1512/vim-clevertab'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'voanhduy1512/vim-numbertoggle'
+Plug 'Valloric/YouCompleteMe'
+Plug 'ervandew/supertab'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local
