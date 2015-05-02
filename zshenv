@@ -9,6 +9,7 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export PATH=$PATH:$HOME/.go/bin
 
+export GOROOT=`go env GOROOT`
 # load rbenv if available
 if which rbenv &>/dev/null ; then
   eval "$(rbenv init - --no-rehash)"

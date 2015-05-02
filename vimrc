@@ -122,10 +122,10 @@ nnoremap <Down> :echoe "Use j"<CR>
 
 " vim-rspec mappings
 let g:rspec_command = "Dispatch rspec {spec}"
-nnoremap <Leader>rt :call RunCurrentSpecFile()<CR>
-nnoremap <Leader>rs :call RunNearestSpec()<CR>
-nnoremap <Leader>rl :call RunLastSpec()<CR>
-nnoremap <Leader>ra :call RunAllSpecs()<CR>
+au FileType ruby nnoremap <Leader>rt :call RunCurrentSpecFile()<CR>
+au FileType ruby nnoremap <Leader>rs :call RunNearestSpec()<CR>
+au FileType ruby nnoremap <Leader>rl :call RunLastSpec()<CR>
+au FileType ruby nnoremap <Leader>ra :call RunAllSpecs()<CR>
 
 " Run commands that require an interactive shell
 nnoremap <Leader>ri :RunInInteractiveShell<space>
@@ -167,9 +167,7 @@ endif
 let g:airline_powerline_fonts = 1
 
 " shortcut
-map <Leader>i mmgg=G`m<CR>
 map <Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
-map <Leader>d obinding.pry<esc>:w<cr>
 map <Leader>h :nohlsearch<cr>
 
 " automatically rebalance windows on vim resize
@@ -202,3 +200,26 @@ call vimfiler#custom#profile('default', 'context', {
        \ 'parent' : 0
        \ })
 nnoremap <leader>n :VimFilerExplorer<cr>
+nnoremap <leader>tb :TagbarToggle<CR>
+
+" Go
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>c <Plug>(go-coverage)
+au FileType go nmap <Leader>s <Plug>(go-implements)
+au FileType go nmap <Leader>i <Plug>(go-info)
+au FileType go nmap <Leader>e <Plug>(go-rename)
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
+
+let g:godef_split=0
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
