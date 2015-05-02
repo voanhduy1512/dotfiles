@@ -223,3 +223,15 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+" Unite
+let g:unite_source_history_yank_enable = 1
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#sorter_default#use(['sorter_rank'])
+nnoremap <C-p> :Unite -no-split -buffer-name=files -start-insert file_rec/async<cr>
+nnoremap ,o :Unite -no-split -buffer-name=mru file_mru<cr>
+nnoremap ,b :Unite -no-split -quick-match -buffer-name=buffer buffer<cr>
+nnoremap ,y :Unite -quick-match -buffer-name=yank history/yank<cr>
+nnoremap <leader>/ :Unite grep:.<cr>
+let g:unite_source_grep_command = 'ag'
+let g:unite_source_grep_default_opts = '--line-numbers --column --nocolor --nogroup --smart-case'
