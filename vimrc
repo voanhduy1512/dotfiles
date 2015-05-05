@@ -14,7 +14,8 @@ set ignorecase
 set smartcase
 set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
-
+set lazyredraw
+set ttyfast
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
@@ -168,6 +169,7 @@ let g:airline_powerline_fonts = 1
 
 " shortcut
 map <Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
+map <Leader>y "*y
 map <Leader>h :nohlsearch<cr>
 
 " automatically rebalance windows on vim resize
@@ -178,9 +180,6 @@ nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
 nnoremap <leader>= :wincmd =<cr>
 nnoremap { gt<CR>
 nnoremap } gT<CR>
-
-let g:netrw_liststyle=3
-nnoremap <leader>n :Explore<cr>
 
 set wildmode=list:longest,list:full
 
@@ -199,7 +198,6 @@ call vimfiler#custom#profile('default', 'context', {
        \ 'auto_expand' : 1,
        \ 'parent' : 0
        \ })
-nnoremap <leader>n :VimFilerExplorer<cr>
 nnoremap <leader>tb :TagbarToggle<CR>
 
 " Go
@@ -228,10 +226,25 @@ let g:syntastic_check_on_wq = 0
 let g:unite_source_history_yank_enable = 1
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
-nnoremap <C-p> :Unite -no-split -buffer-name=files -start-insert file_rec/async<cr>
-nnoremap ,o :Unite -no-split -buffer-name=mru file_mru<cr>
-nnoremap ,b :Unite -no-split -quick-match -buffer-name=buffer buffer<cr>
-nnoremap ,y :Unite -quick-match -buffer-name=yank history/yank<cr>
 nnoremap <leader>/ :Unite grep:.<cr>
 let g:unite_source_grep_command = 'ag'
 let g:unite_source_grep_default_opts = '--line-numbers --column --nocolor --nogroup --smart-case'
+
+map <leader>n :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+function! RestartRails(dir)
+    let l:ret=system("touch ".a:dir."/tmp/restart.txt")
+    if l:ret == ""
+        echo "Application's restarted"
+    else
+        echohl Error | echo "Failed to restart rails - is your working directory a rails app?" | echohl None
+    endif
+  endfunction
+
+nnoremap ,b :CtrlPBuffer<cr>
+nnoremap ,y :Unite -quick-match -buffer-name=yank history/yank<cr>
+au FileType ruby nnoremap <leader>w :Dispatch! tmux split-window -v 'pry-remote -w'<cr>
+au FileType ruby nnoremap <leader>rd :Dispatch! tmux split-window -v 'pry-remote -r'<cr>
+au FileType ruby nnoremap <leader>rb :Bundle<cr>
+au FileType ruby nnoremap <leader>rr :call RestartRails(getcwd())<cr>
