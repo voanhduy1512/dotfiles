@@ -57,6 +57,10 @@ augroup vimrcEx
   autocmd FileType css,scss,sass setlocal iskeyword+=-
 augroup END
 
+
+if has('nvim')
+  nmap <BS> <C-W>h
+endif
 " autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 " autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 " autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
@@ -218,10 +222,6 @@ au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
 
 let g:godef_split=0
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
 
 " Unite
 let g:unite_source_history_yank_enable = 1
@@ -235,13 +235,13 @@ map <leader>n :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 function! RestartRails(dir)
-    let l:ret=system("touch ".a:dir."/tmp/restart.txt")
-    if l:ret == ""
-        echo "Application's restarted"
-    else
-        echohl Error | echo "Failed to restart rails - is your working directory a rails app?" | echohl None
-    endif
-  endfunction
+  let l:ret=system("touch ".a:dir."/tmp/restart.txt")
+  if l:ret == ""
+    echo "Application's restarted"
+  else
+    echohl Error | echo "Failed to restart rails - is your working directory a rails app?" | echohl None
+  endif
+endfunction
 
 nnoremap ,b :CtrlPBuffer<cr>
 nnoremap ,y :Unite -quick-match -buffer-name=yank history/yank<cr>
