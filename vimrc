@@ -57,9 +57,9 @@ augroup vimrcEx
   autocmd FileType css,scss,sass setlocal iskeyword+=-
 augroup END
 
-autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+" autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+" autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+" autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 
 " Softtabs, 2 spaces
 set tabstop=2
@@ -187,6 +187,7 @@ let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
+let g:UltiSnipsUsePythonVersion = 2
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
