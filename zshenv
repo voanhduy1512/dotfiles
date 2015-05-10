@@ -26,6 +26,7 @@ if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Local config
 [[ -f ~/.zshenv.local ]] && source ~/.zshenv.local

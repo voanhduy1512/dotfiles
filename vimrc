@@ -162,6 +162,8 @@ set complete+=kspell
 " Always use vertical diffs
 set diffopt+=vertical
 
+set rtp+=~/.fzf
+
 " Local config
 if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
@@ -198,11 +200,6 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 let g:NumberToggleTrigger="<Leader>tn"
 
-call vimfiler#custom#profile('default', 'context', {
-       \ 'safe' : 0,
-       \ 'auto_expand' : 1,
-       \ 'parent' : 0
-       \ })
 nnoremap <leader>tb :TagbarToggle<CR>
 
 " Go

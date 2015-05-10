@@ -57,8 +57,6 @@ Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'Shougo/vimshell.vim'
 Plug 'Shougo/neomru.vim'
-" Plug 'Shougo/vimfiler.vim'
-Plug 'voanhduy1512/vimfiler.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'voanhduy1512/vim-numbertoggle'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -67,7 +65,10 @@ Plug 'ervandew/supertab'
 Plug 'majutsushi/tagbar'
 Plug 'airblade/vim-gitgutter'
 Plug 'fatih/vim-go'
-Plug 'voanhduy1512/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'voanhduy1512/nerdtree'
+Plug 'chase/vim-ansible-yaml'
+Plug 'mxw/vim-jsx'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local
