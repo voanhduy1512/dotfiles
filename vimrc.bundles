@@ -60,12 +60,14 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer --gocode-completer' }
 Plug 'ervandew/supertab'
 Plug 'majutsushi/tagbar'
-Plug 'airblade/vim-gitgutter'
+Plug 'mhinz/vim-signify'
 Plug 'fatih/vim-go'
 Plug 'voanhduy1512/nerdtree'
 Plug 'chase/vim-ansible-yaml'
 Plug 'mxw/vim-jsx'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+Plug 'wakatime/vim-wakatime'
+Plug 'rizzatti/dash.vim'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local

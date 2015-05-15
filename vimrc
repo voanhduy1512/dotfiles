@@ -14,7 +14,6 @@ set ignorecase
 set smartcase
 set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
-set lazyredraw
 set ttyfast
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -246,3 +245,7 @@ au FileType ruby nnoremap <leader>w :Dispatch! tmux split-window -v 'pry-remote 
 au FileType ruby nnoremap <leader>rd :Dispatch! tmux split-window -v 'pry-remote -r'<cr>
 au FileType ruby nnoremap <leader>rb :Bundle<cr>
 au FileType ruby nnoremap <leader>rr :call RestartRails(getcwd())<cr>
+au FileType ruby nnoremap <leader>rr :call RestartRails(getcwd())<cr>
+au FileType ruby nnoremap <leader>rc :Rails console<cr>
+
+:nmap <silent> <leader>d <Plug>DashSearch
