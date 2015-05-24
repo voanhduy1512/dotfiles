@@ -218,15 +218,6 @@ au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
 
 let g:godef_split=0
 
-
-" Unite
-let g:unite_source_history_yank_enable = 1
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#filters#sorter_default#use(['sorter_rank'])
-nnoremap <leader>/ :Unite grep:.<cr>
-let g:unite_source_grep_command = 'ag'
-let g:unite_source_grep_default_opts = '--line-numbers --column --nocolor --nogroup --smart-case'
-
 map <leader>n :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
@@ -240,7 +231,6 @@ function! RestartRails(dir)
 endfunction
 
 nnoremap ,b :CtrlPBuffer<cr>
-nnoremap ,y :Unite -quick-match -buffer-name=yank history/yank<cr>
 au FileType ruby nnoremap <leader>w :Dispatch! tmux split-window -v 'pry-remote -w'<cr>
 au FileType ruby nnoremap <leader>rd :Dispatch! tmux split-window -v 'pry-remote -r'<cr>
 au FileType ruby nnoremap <leader>rb :Bundle<cr>
