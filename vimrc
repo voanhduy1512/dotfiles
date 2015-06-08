@@ -112,7 +112,7 @@ set relativenumber
 set number
 set numberwidth=5
 
-hi CursorLineNr   term=bold ctermfg=Yellow gui=bold guifg=Yellow
+hi CursorLineNr   term=bold ctermfg=180 gui=bold guifg=Yellow
 
 " Exclude Javascript files in :Rtags via rails.vim due to warnings when parsing
 let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
