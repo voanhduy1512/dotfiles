@@ -65,7 +65,7 @@ Plug 'mxw/vim-jsx'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'wakatime/vim-wakatime'
 Plug 'rizzatti/dash.vim'
-
+Plug 'stefanoverna/vim-i18n'
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local
 endif
