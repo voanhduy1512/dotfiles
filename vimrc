@@ -86,7 +86,7 @@ if executable('ag')
 endif
 
 " Color scheme
-let base16colorspace=256
+" let base16colorspace=256
 set background=dark
 colorscheme base16-ocean
 highlight NonText guibg=#060606
