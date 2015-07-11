@@ -91,7 +91,7 @@ if executable('ag')
 endif
 
 " Color scheme
-" let base16colorspace=256
+let base16colorspace=256
 set background=dark
 colorscheme base16-ocean
 highlight NonText guibg=#060606
@@ -246,3 +246,5 @@ au FileType ruby nnoremap <leader>rr :call RestartRails(getcwd())<cr>
 au FileType ruby nnoremap <leader>rc :Rails console<cr>
 
 :nmap <silent> <leader>d <Plug>DashSearch
+
+set regexpengine=1
