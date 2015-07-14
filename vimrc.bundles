@@ -36,6 +36,7 @@ Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rake'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
@@ -60,11 +61,10 @@ Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-signify'
 Plug 'fatih/vim-go'
 Plug 'voanhduy1512/nerdtree'
-Plug 'chase/vim-ansible-yaml'
-Plug 'mxw/vim-jsx'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'wakatime/vim-wakatime'
 Plug 'rizzatti/dash.vim'
+
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local
 endif

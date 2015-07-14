@@ -5,7 +5,7 @@ set backspace=2   " Backspace deletes like most programs in insert mode
 set nobackup
 set nowritebackup
 set noswapfile    " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
-set history=50
+set history=1000
 set ruler         " show the cursor position all the time
 set showcmd       " display incomplete commands
 set incsearch     " do incremental searching
@@ -15,6 +15,9 @@ set smartcase
 set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
 set ttyfast
+set hidden
+set lazyredraw
+
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
@@ -61,6 +64,7 @@ augroup vimrcEx
   autocmd FileType css,scss,sass setlocal iskeyword+=-
 augroup END
 
+autocmd Filetype help nnoremap <buffer> q :q<CR>
 
 if has('nvim')
   nmap <BS> <C-W>h
@@ -240,11 +244,16 @@ endfunction
 nnoremap ,b :CtrlPBuffer<cr>
 au FileType ruby nnoremap <leader>w :Dispatch! tmux split-window -v 'pry-remote -w'<cr>
 au FileType ruby nnoremap <leader>rd :Dispatch! tmux split-window -v 'pry-remote -r'<cr>
-au FileType ruby nnoremap <leader>rb :Bundle<cr>
+au FileType ruby nnoremap <leader>rb :Dispatch bundle<cr>
 au FileType ruby nnoremap <leader>rr :call RestartRails(getcwd())<cr>
 au FileType ruby nnoremap <leader>rr :call RestartRails(getcwd())<cr>
 au FileType ruby nnoremap <leader>rc :Rails console<cr>
 
-:nmap <silent> <leader>d <Plug>DashSearch
+nmap <silent> <leader>d <Plug>DashSearch
+
+nmap <leader>vi :sp $MYVIMRC<cr>
+nmap <leader>so :source $MYVIMRC<cr>
+imap jk <esc>
+imap kj <esc>
 
 set regexpengine=1
