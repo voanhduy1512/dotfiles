@@ -135,10 +135,10 @@ nnoremap <Down> :echoe "Use j"<CR>
 
 " vim-rspec mappings
 let g:rspec_command = "Dispatch rspec {spec}"
-au FileType ruby nnoremap <Leader>rt :call RunCurrentSpecFile()<CR>
-au FileType ruby nnoremap <Leader>rs :call RunNearestSpec()<CR>
-au FileType ruby nnoremap <Leader>rl :call RunLastSpec()<CR>
-au FileType ruby nnoremap <Leader>ra :call RunAllSpecs()<CR>
+au FileType ruby nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
+au FileType ruby nnoremap <Leader>s :call RunNearestSpec()<CR>
+au FileType ruby nnoremap <Leader>l :call RunLastSpec()<CR>
+au FileType ruby nnoremap <Leader>a :call RunAllSpecs()<CR>
 
 " Run commands that require an interactive shell
 nnoremap <Leader>ri :RunInInteractiveShell<space>
@@ -213,6 +213,8 @@ let g:NumberToggleTrigger="<Leader>tn"
 nnoremap <leader>tb :TagbarToggle<CR>
 
 " Go
+
+let g:go_dispatch_enabled = 1
 au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>t <Plug>(go-test)
@@ -241,19 +243,18 @@ function! RestartRails(dir)
   endif
 endfunction
 
-nnoremap ,b :CtrlPBuffer<cr>
-au FileType ruby nnoremap <leader>w :Dispatch! tmux split-window -v 'pry-remote -w'<cr>
-au FileType ruby nnoremap <leader>rd :Dispatch! tmux split-window -v 'pry-remote -r'<cr>
-au FileType ruby nnoremap <leader>rb :Dispatch bundle<cr>
-au FileType ruby nnoremap <leader>rr :call RestartRails(getcwd())<cr>
-au FileType ruby nnoremap <leader>rr :call RestartRails(getcwd())<cr>
-au FileType ruby nnoremap <leader>rc :Rails console<cr>
+nnoremap <leader>b :Dispatch bundle<cr>
+nnoremap <leader>rr :call RestartRails(getcwd())<cr>
+nnoremap <leader>ra :VtrSendCommandToRunner bundle exec rake<cr>
 
-nmap <silent> <leader>d <Plug>DashSearch
+nmap <silent> <leader>ds <Plug>DashSearch
 
 nmap <leader>vi :sp $MYVIMRC<cr>
 nmap <leader>so :source $MYVIMRC<cr>
+nmap <silent> <leader>ld <Plug>DashSearch
 imap jk <esc>
 imap kj <esc>
 
+nmap k gk
+nmap j gj
 set regexpengine=1
