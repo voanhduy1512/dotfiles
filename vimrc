@@ -14,7 +14,6 @@ set ignorecase
 set smartcase
 set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
-set ttyfast
 set hidden
 set lazyredraw
 
@@ -161,7 +160,7 @@ let g:syntastic_check_on_open=1
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 let g:syntastic_eruby_ruby_quiet_messages =
     \ {"regex": "possibly useless use of a variable in void context"}
-
+let g:syntastic_javascript_checkers = ['eslint']
 " Set spellfile to location that is guaranteed to exist, can be symlinked to
 " Dropbox or kept in Git and managed outside of thoughtbot/dotfiles using rcm.
 set spellfile=$HOME/.vim-spell-en.utf-8.add
@@ -243,9 +242,20 @@ function! RestartRails(dir)
   endif
 endfunction
 
+augroup VimCSS3Syntax
+  autocmd!
+
+  autocmd FileType css setlocal iskeyword+=-
+augroup END
+
+autocmd FileType javascript setlocal omnifunc=tern#Complete
 nnoremap <leader>b :Dispatch bundle<cr>
 nnoremap <leader>rr :call RestartRails(getcwd())<cr>
 nnoremap <leader>ra :VtrSendCommandToRunner bundle exec rake<cr>
+
+nnoremap <leader>ca :Dispatch cordova emulate android<cr>
+nnoremap <leader>ci :Dispatch cordova emulate ios<cr>
+nnoremap <leader>cb :Dispatch cordova build<cr>
 
 nmap <silent> <leader>ds <Plug>DashSearch
 
@@ -257,4 +267,15 @@ imap kj <esc>
 
 nmap k gk
 nmap j gj
-set regexpengine=1
+" set regexpengine=1
+
+augroup markdown
+    au!
+    au BufNewFile,BufRead *.md,*.markdown setlocal filetype=markdown
+augroup END
+
+let g:jsx_ext_required = 0
+
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+nnoremap \ :Ag<SPACE>

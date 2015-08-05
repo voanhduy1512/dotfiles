@@ -25,5 +25,9 @@
 [include]
   path = ~/.gitconfig.local
 [user]
-	name = Vo Anh Duy
+	name = Võ Anh Duy
 	email = voanhduy1512@live.com
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
