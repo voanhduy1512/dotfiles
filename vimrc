@@ -15,7 +15,6 @@ set smartcase
 set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
 set hidden
-set lazyredraw
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -274,8 +273,21 @@ augroup markdown
     au BufNewFile,BufRead *.md,*.markdown setlocal filetype=markdown
 augroup END
 
+au BufNewFile,BufRead *.sc,*.scala setlocal filetype=scala
+
 let g:jsx_ext_required = 0
 
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 nnoremap \ :Ag<SPACE>
+
+let g:EclimCompletionMethod = 'omnifunc'
+
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_auto_type_info = 1
+let g:go_fmt_autosave = 0
+ let g:go_fmt_command = "goimports"

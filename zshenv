@@ -3,13 +3,16 @@ export VISUAL=vim
 export EDITOR=$VISUAL
 export DEFAULT_USER="anhduyvo"
 export GOPATH="$HOME/.go"
+export MAVEN_REPOSITORY="$HOME/.m2/repository"
 # ensure dotfiles bin directory is loaded first
 export PATH="$HOME/.bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
+export GOROOT=`go env GOROOT`
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export PATH=$PATH:$HOME/.go/bin
+export ECLIPSE_HOME=/Applications/Eclipse.app/Contents/Eclipse
+export SCALA_HOME=/usr/local/opt/scala/idea
 
-export GOROOT=`go env GOROOT`
 # load rbenv if available
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
