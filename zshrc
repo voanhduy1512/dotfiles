@@ -106,6 +106,12 @@ eval "$(hub alias -s)"
 
 _load_settings "$HOME/.zsh/configs"
 
+# Local config
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+
+ensure_tmux_is_running
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 _not_inside_tmux() { [[ -z "$TMUX" ]] }
 
 ensure_tmux_is_running() {
@@ -113,12 +119,3 @@ ensure_tmux_is_running() {
     tat
   fi
 }
-
-# Local config
-[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
-
-ensure_tmux_is_running
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-BASE16_SHELL="$HOME/.config/base16-shell/base16-ocean.dark.sh"
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
