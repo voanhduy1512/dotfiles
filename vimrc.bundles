@@ -57,7 +57,7 @@ Plug 'honza/vim-snippets'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'voanhduy1512/vim-numbertoggle'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer --gocode-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer' }
 Plug 'Valloric/MatchTagAlways'
 Plug 'ervandew/supertab'
 Plug 'majutsushi/tagbar'

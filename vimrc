@@ -262,8 +262,6 @@ nmap <silent> <leader>ds <Plug>DashSearch
 nmap <leader>vi :sp $MYVIMRC<cr>
 nmap <leader>so :source $MYVIMRC<cr>
 nmap <silent> <leader>ld <Plug>DashSearch
-imap jk <esc>
-imap kj <esc>
 
 nmap k gk
 nmap j gj
@@ -279,7 +277,7 @@ au BufNewFile,BufRead *.sc,*.scala setlocal filetype=scala
 let g:jsx_ext_required = 0
 
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
-command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 nnoremap \ :Ag<SPACE>
 
 let g:EclimCompletionMethod = 'omnifunc'
