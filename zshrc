@@ -46,7 +46,6 @@ unsetopt nomatch
 # vi mode
 bindkey -v
 bindkey "^F" vi-cmd-mode
-bindkey jj vi-cmd-mode
 
 # handy keybindings
 bindkey "^A" beginning-of-line
@@ -109,7 +108,6 @@ _load_settings "$HOME/.zsh/configs"
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
-ensure_tmux_is_running
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 _not_inside_tmux() { [[ -z "$TMUX" ]] }
@@ -119,3 +117,5 @@ ensure_tmux_is_running() {
     tat
   fi
 }
+
+ensure_tmux_is_running
