@@ -101,6 +101,8 @@ fi
 
 eval "$(hub alias -s)"
 
+eval "$(thefuck --alias)"
+
 . `brew --prefix`/etc/profile.d/z.sh
 
 _load_settings "$HOME/.zsh/configs"
