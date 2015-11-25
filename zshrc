@@ -42,12 +42,6 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-eval "$(hub alias -s)"
-
-eval "$(thefuck --alias)"
-
-. `brew --prefix`/etc/profile.d/z.sh
-
 _load_settings "$HOME/.zsh/configs"
 
 # aliases
@@ -55,8 +49,6 @@ _load_settings "$HOME/.zsh/configs"
 
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 _not_inside_tmux() { [[ -z "$TMUX" ]] }
 

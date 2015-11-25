@@ -32,7 +32,7 @@ export DEFAULT_USER="anhduyvo"
 export GOPATH="$HOME/.go"
 export MAVEN_REPOSITORY="$HOME/.m2/repository"
 # ensure dotfiles bin directory is loaded first
-export PATH="$HOME/.bin:$PATH"
+export PATH="$HOME/.bin:/usr/local/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
 export GOROOT=`go env GOROOT`
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
@@ -45,3 +45,10 @@ fi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 BASE16_SHELL="$HOME/.config/base16-shell/base16-ocean.dark.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+eval "$(hub alias -s)"
+
+eval "$(thefuck --alias)"
+
+. `brew --prefix`/etc/profile.d/z.sh
