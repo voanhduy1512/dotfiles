@@ -77,9 +77,8 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'groenewege/vim-less'
 Plug 'moll/vim-node'
-Plug 'derekwyatt/vim-scala'
 Plug 'digitaltoad/vim-jade'
-Plug 'rjohnsondev/vim-compiler-go'
+Plug 'ekalinin/Dockerfile.vim'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local

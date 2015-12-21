@@ -71,6 +71,7 @@ brew 'postgresql'
 brew 'qt'
 brew 'ruby-build', args: ['HEAD']
 brew 'rbenv', args: ['HEAD']
+brew 'rbenv-ctags'
 brew 'rbenv-default-gems'
 brew 'reattach-to-user-namespace'
 brew 'redis'
