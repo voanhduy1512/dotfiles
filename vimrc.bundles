@@ -27,6 +27,9 @@ com! -nargs=+  -bar Bundle call VundleToPlug("Bundle", <args>)
 call plug#begin('~/.vim/bundle')
 
 " Define bundles via Github repos
+Plug 'christoomey/vim-run-interactive'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'fatih/vim-go'
 Plug 'kchmck/vim-coffee-script'
 Plug 'pbrisbin/vim-mkdir'
 Plug 'scrooloose/syntastic'
@@ -56,13 +59,11 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'voanhduy1512/vim-numbertoggle'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer' }
 Plug 'Valloric/MatchTagAlways'
 Plug 'ervandew/supertab'
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-signify'
-Plug 'fatih/vim-go'
 Plug 'voanhduy1512/nerdtree'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'wakatime/vim-wakatime'
