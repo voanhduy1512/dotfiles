@@ -242,43 +242,22 @@ nnoremap <leader>b :Dispatch bundle<cr>
 nnoremap <leader>rr :call RestartRails(getcwd())<cr>
 nnoremap <leader>ra :VtrSendCommandToRunner bundle exec rake<cr>
 
-nnoremap <leader>ca :Dispatch cordova emulate android<cr>
-nnoremap <leader>ci :Dispatch cordova emulate ios<cr>
-nnoremap <leader>cb :Dispatch cordova build<cr>
-
-nmap <silent> <leader>ds <Plug>DashSearch
-
 nmap <leader>vi :sp $MYVIMRC<cr>
 nmap <leader>so :source $MYVIMRC<cr>
-nmap <silent> <leader>ld <Plug>DashSearch
 
 nmap k gk
 nmap j gj
-set regexpengine=1
+" set regexpengine=1
 
 augroup markdown
     au!
     au BufNewFile,BufRead *.md,*.markdown setlocal filetype=markdown
 augroup END
 
-au BufNewFile,BufRead *.sc,*.scala setlocal filetype=scala
-
 let g:jsx_ext_required = 0
 
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 nnoremap \ :Ag<SPACE>
-
-let g:EclimCompletionMethod = 'omnifunc'
-
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-let g:go_auto_type_info = 1
-let g:go_fmt_autosave = 0
-let g:go_fmt_command = "goimports"
-
 
 set tags+=gems.tags
