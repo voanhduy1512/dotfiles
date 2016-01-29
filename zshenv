@@ -28,16 +28,11 @@ unset _old_path
 
 export VISUAL=vim
 export EDITOR=$VISUAL
-export DEFAULT_USER="anhduyvo"
+export DEFAULT_USER=`whoami`
 export GOPATH="$HOME/.go"
-export MAVEN_REPOSITORY="$HOME/.m2/repository"
 export PATH="$HOME/.bin:/usr/local/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
 export GOROOT=`go env GOROOT`
-export PATH=$PATH:/usr/local/opt/go/libexec/bin
-export PATH=$PATH:$HOME/.go/bin
-export ECLIPSE_HOME=/Applications/Eclipse.app/Contents/Eclipse
-export SCALA_HOME=/usr/local/opt/scala/idea
 
 if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"

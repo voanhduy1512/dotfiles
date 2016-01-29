@@ -66,8 +66,3 @@ ensure_tmux_is_running
 eval "$(fasd --init auto)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-eval "$(hub alias -s)"
-
-eval "$(thefuck --alias)"
-

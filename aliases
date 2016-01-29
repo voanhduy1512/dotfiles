@@ -22,5 +22,7 @@ alias dk='docker'
 alias dkc='docker-compose'
 alias dkm='docker-machine'
 
+alias git=hub
+
 # Include custom aliases
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local

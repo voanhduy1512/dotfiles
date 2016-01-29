@@ -31,7 +31,6 @@ brew 'rbenv-default-gems'
 brew 'reattach-to-user-namespace'
 brew 'redis'
 brew 'the_silver_searcher'
-brew 'thefuck'
 brew 'tmux', args: ['HEAD']
 brew 'vim', args: ['with-lua', 'with-luajit']
 brew 'wget'
