@@ -68,9 +68,6 @@
     ;; git integration
     magit
 
-    ;; evil mode for vim key binding
-    evil
-
     base16-theme
     ))
 
