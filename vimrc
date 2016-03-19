@@ -63,6 +63,9 @@ endif
 " autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 " autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 " autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+" When the type of shell script is /bin/sh, assume a POSIX-compatible
+" shell for syntax highlighting purposes.
+let g:is_posix = 1
 
 " Softtabs, 2 spaces
 set tabstop=2
@@ -121,15 +124,15 @@ nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
-" vim-rspec mappings
-let g:rspec_command = "Dispatch rspec {spec}"
-au FileType ruby nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
-au FileType ruby nnoremap <Leader>s :call RunNearestSpec()<CR>
-au FileType ruby nnoremap <Leader>l :call RunLastSpec()<CR>
-au FileType ruby nnoremap <Leader>a :call RunAllSpecs()<CR>
+" vim-test mappings
+nnoremap <silent> <Leader>t :TestFile<CR>
+nnoremap <silent> <Leader>s :TestNearest<CR>
+nnoremap <silent> <Leader>l :TestLast<CR>
+nnoremap <silent> <Leader>a :TestSuite<CR>
+nnoremap <silent> <leader>gt :TestVisit<CR>
 
 " Run commands that require an interactive shell
-nnoremap <Leader>ri :RunInInteractiveShell<space>
+nnoremap <Leader>r :RunInInteractiveShell<space>
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'

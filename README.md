@@ -157,7 +157,7 @@ What's in it?
 * [Rails.vim](https://github.com/tpope/vim-rails) for enhanced navigation of
   Rails file structure via `gf` and `:A` (alternate), `:Rextract` partials,
   `:Rinvert` migrations, etc.
-* Run [RSpec](https://www.relishapp.com/rspec) specs from vim.
+* Run many kinds of tests [from vim]([https://github.com/janko-m/vim-test)
 * Set `<leader>` to a single space.
 * Switch between the last two files with space-space.
 * Syntax highlighting for CoffeeScript, Textile, Cucumber, Haml, Markdown, and
@@ -215,7 +215,7 @@ in this project.
 License
 -------
 
-dotfiles is copyright © 2009-2015 thoughtbot. It is free software, and may be
+dotfiles is copyright © 2009-2016 thoughtbot. It is free software, and may be
 redistributed under the terms specified in the [`LICENSE`] file.
 
 [`LICENSE`]: /LICENSE
