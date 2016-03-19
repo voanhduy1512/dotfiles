@@ -69,6 +69,9 @@
     magit
 
     base16-theme
+
+    ;; autocomplete
+    auto-complete
     ))
 
 ;; On OS X, an Emacs instance started from the graphical user

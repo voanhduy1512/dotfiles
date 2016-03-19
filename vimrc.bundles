@@ -66,7 +66,6 @@ Plug 'ervandew/supertab'
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-signify'
 Plug 'voanhduy1512/nerdtree'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'wakatime/vim-wakatime'
 Plug 'gabrielelana/vim-markdown'
 Plug 'mattn/emmet-vim'

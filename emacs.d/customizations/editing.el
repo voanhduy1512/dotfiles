@@ -70,6 +70,4 @@
     (quit nil)))
 
 (setq electric-indent-mode nil)
-
-
-(evil-mode 1)
+(ac-config-default)
