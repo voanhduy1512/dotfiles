@@ -81,6 +81,11 @@ Plug 'moll/vim-node'
 Plug 'digitaltoad/vim-jade'
 Plug 'ekalinin/Dockerfile.vim'
 
+Plug 'hashivim/vim-terraform'
+
+Plug 'tpope/vim-fireplace'
+Plug 'tpope/vim-salve'
+
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local
 endif

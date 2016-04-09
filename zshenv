@@ -33,6 +33,7 @@ export GOPATH="$HOME/.go"
 export PATH="$HOME/.bin:/usr/local/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
 export GOROOT=`go env GOROOT`
+export PATH="$PATH:$GOPATH/bin"
 
 if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"
