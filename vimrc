@@ -174,6 +174,7 @@ endif
 
 " airline
 let g:airline_powerline_fonts = 1
+let g:airline_theme="base16"
 
 " shortcut
 map <Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
