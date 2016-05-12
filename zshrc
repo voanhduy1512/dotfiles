@@ -66,3 +66,5 @@ ensure_tmux_is_running
 eval "$(fasd --init auto)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+eval "$(direnv hook zsh)"

@@ -227,6 +227,9 @@ let g:godef_split=0
 map <leader>n :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+" close vim if it's the only window left
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 function! RestartRails(dir)
   let l:ret=system("touch ".a:dir."/tmp/restart.txt")
   if l:ret == ""
