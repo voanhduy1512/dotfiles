@@ -80,6 +80,7 @@ Plug 'groenewege/vim-less'
 Plug 'moll/vim-node'
 Plug 'digitaltoad/vim-jade'
 Plug 'ekalinin/Dockerfile.vim'
+Plug 'szw/vim-maximizer'
 
 Plug 'hashivim/vim-hashicorp-tools'
 Plug 'b4b4r07/vim-hcl'

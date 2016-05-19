@@ -41,13 +41,13 @@ filetype plugin indent on
 augroup vimrcEx
   autocmd!
 
-        " When editing a file, always jump to the last known cursor position.
+  " When editing a file, always jump to the last known cursor position.
   " Don't do it for commit messages, when the position is invalid, or when
   " inside an event handler (happens when dropping a file on gvim).
   autocmd BufReadPost *
-    \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal g`\"" |
-    \ endif
+        \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
+        \   exe "normal g`\"" |
+        \ endif
 
   " Set syntax highlighting for specific file types
   autocmd BufRead,BufNewFile Appraisals set filetype=ruby
@@ -105,8 +105,8 @@ set colorcolumn=+1
 " vim tmux runner
 let g:VtrUseVtrMaps = 1
 
- nmap <C-f> :VtrSendLinesToRunner<cr>
- vmap <C-f> <Esc>:VtrSendSelectedToRunner<cr>
+nmap <C-f> :VtrSendLinesToRunner<cr>
+vmap <C-f> <Esc>:VtrSendSelectedToRunner<cr>
 
 " Numbers
 set relativenumber
@@ -152,7 +152,7 @@ nnoremap <C-l> <C-w>l
 let g:syntastic_check_on_open=1
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 let g:syntastic_eruby_ruby_quiet_messages =
-    \ {"regex": "possibly useless use of a variable in void context"}
+      \ {"regex": "possibly useless use of a variable in void context"}
 let g:syntastic_javascript_checkers = ['eslint']
 " Set spellfile to location that is guaranteed to exist, can be symlinked to
 " Dropbox or kept in Git and managed outside of thoughtbot/dotfiles using rcm.
@@ -177,7 +177,7 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme="base16"
 
 " shortcut
-map <Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
+map <Leader>p :set paste<CR>"*]p:set nopaste<cr>
 map <Leader>y "*y
 map <Leader>h :nohlsearch<cr>
 
@@ -258,8 +258,8 @@ nmap j gj
 " set regexpengine=1
 
 augroup markdown
-    au!
-    au BufNewFile,BufRead *.md,*.markdown setlocal filetype=markdown
+  au!
+  au BufNewFile,BufRead *.md,*.markdown setlocal filetype=markdown
 augroup END
 
 let g:jsx_ext_required = 0
@@ -272,3 +272,11 @@ set tags+=gems.tags
 
 let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+
+let g:maximizer_set_default_mapping = 0
+
+if has('nvim')
+  nmap <BS> :<C-u>TmuxNavigateLeft<CR>
+else
+  nmap <C-h> <C-w>h
+endif
