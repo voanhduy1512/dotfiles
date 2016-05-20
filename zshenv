@@ -1,3 +1,7 @@
+if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprofile"
+fi
+
 local _old_path="$PATH"
 
 # Local config
@@ -35,7 +39,4 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 export GOROOT=`go env GOROOT`
 export PATH="$PATH:$GOPATH/bin"
 
-if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprofile"
-fi
 
