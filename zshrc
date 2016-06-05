@@ -68,3 +68,5 @@ eval "$(fasd --init auto)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 eval "$(direnv hook zsh)"
+
+eval "$(stack --bash-completion-script stack)"
