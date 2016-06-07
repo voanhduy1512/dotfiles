@@ -59,6 +59,7 @@ Plug 'chriskempson/base16-vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'fatih/vim-hclfmt'
 Plug 'voanhduy1512/vim-numbertoggle'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer' }
 Plug 'Valloric/MatchTagAlways'
@@ -84,10 +85,11 @@ Plug 'szw/vim-maximizer'
 
 Plug 'hashivim/vim-hashicorp-tools'
 Plug 'b4b4r07/vim-hcl'
+Plug 'fatih/vim-hclfmt'
 
 Plug 'tpope/vim-fireplace'
 Plug 'tpope/vim-salve'
-Plug 'fatih/vim-hclfmt'
+
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local

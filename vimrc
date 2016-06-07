@@ -171,7 +171,6 @@ if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
 endif
 
-
 " airline
 let g:airline_powerline_fonts = 1
 let g:airline_theme="base16"
@@ -201,8 +200,6 @@ let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
-let g:NumberToggleTrigger="<Leader>tn"
-
 nnoremap <leader>tb :TagbarToggle<CR>
 
 " Go
@@ -230,15 +227,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 " close vim if it's the only window left
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-function! RestartRails(dir)
-  let l:ret=system("touch ".a:dir."/tmp/restart.txt")
-  if l:ret == ""
-    echo "Application's restarted"
-  else
-    echohl Error | echo "Failed to restart rails - is your working directory a rails app?" | echohl None
-  endif
-endfunction
-
 augroup VimCSS3Syntax
   autocmd!
 
@@ -247,8 +235,6 @@ augroup END
 
 autocmd FileType javascript setlocal omnifunc=tern#Complete
 nnoremap <leader>b :Dispatch bundle<cr>
-nnoremap <leader>rr :call RestartRails(getcwd())<cr>
-nnoremap <leader>ra :VtrSendCommandToRunner bundle exec rake<cr>
 
 nmap <leader>vi :sp $MYVIMRC<cr>
 nmap <leader>so :source $MYVIMRC<cr>
@@ -264,7 +250,6 @@ augroup END
 
 let g:jsx_ext_required = 0
 
-"nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 nnoremap \ :Ag<SPACE>
 
