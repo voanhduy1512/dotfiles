@@ -133,7 +133,7 @@ nnoremap <silent> <Leader>a :TestSuite<CR>
 nnoremap <silent> <leader>gt :TestVisit<CR>
 
 " Run commands that require an interactive shell
-nnoremap <Leader>r :RunInInteractiveShell<space>
+nnoremap <Leader>ri :RunInInteractiveShell<space>
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
@@ -203,8 +203,19 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 nnoremap <leader>tb :TagbarToggle<CR>
 
 " Go
-
 let g:go_dispatch_enabled = 1
+let g:go_fmt_command = "goimports"
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+let g:go_list_type = "quickfix"
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_interfaces = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+
 au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>t <Plug>(go-test)
@@ -218,8 +229,9 @@ au FileType go nmap <Leader>dt <Plug>(go-def-tab)
 au FileType go nmap <Leader>gd <Plug>(go-doc)
 au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
 au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
-
-let g:godef_split=0
+au FileType go nmap <leader>rt <Plug>(go-run-tab)
+au FileType go nmap <Leader>rs <Plug>(go-run-split)
+au FileType go nmap <Leader>rv <Plug>(go-run-vertical)
 
 map <leader>n :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
@@ -255,9 +267,6 @@ nnoremap \ :Ag<SPACE>
 
 set tags+=gems.tags
 
-let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
-let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
-
 let g:maximizer_set_default_mapping = 0
 
 if has('nvim')
@@ -265,3 +274,9 @@ if has('nvim')
 else
   nmap <C-h> <C-w>h
 endif
+
+map , <Plug>(easymotion-prefix)
+
+let g:ycm_semantic_triggers = {
+      \ 'elm' : ['.'],
+      \}
