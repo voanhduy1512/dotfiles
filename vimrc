@@ -17,7 +17,7 @@ set autowrite     " Automatically :write before running commands
 set hidden
 set ttyfast
 set lazyredraw
-
+set termguicolors
 set ttimeout
 set ttimeoutlen=100
 
@@ -92,11 +92,8 @@ if executable('ag')
 endif
 
 " Color scheme
-let base16colorspace=256
 set background=dark
 colorscheme base16-ocean
-highlight NonText guibg=#060606
-highlight Folded  guibg=#0A0A0A guifg=#9090D0
 
 " Make it obvious where 80 characters is
 set textwidth=80
@@ -173,7 +170,6 @@ endif
 
 " airline
 let g:airline_powerline_fonts = 1
-let g:airline_theme="base16"
 
 " shortcut
 map <Leader>p :set paste<CR>"*]p:set nopaste<cr>
@@ -280,3 +276,6 @@ map , <Plug>(easymotion-prefix)
 let g:ycm_semantic_triggers = {
       \ 'elm' : ['.'],
       \}
+
+set t_8f=[38;2;%lu;%lu;%lum  " Needed in tmux
+set t_8b=[48;2;%lu;%lu;%lum  " Ditto
