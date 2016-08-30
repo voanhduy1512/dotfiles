@@ -38,4 +38,4 @@ export PATH="$HOME/.local/bin:$HOME/.bin:/usr/local/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
 export GOROOT=`go env GOROOT`
 export PATH="$PATH:$GOPATH/bin"
-
+export MACHINE_DRIVER=virtualbox

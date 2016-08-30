@@ -20,6 +20,7 @@
   ff = only
 [commit]
   template = ~/.gitmessage
+	gpgsign = true
 [fetch]
   prune = true
 [rebase]
@@ -29,6 +30,7 @@
 [user]
   name = Võ Anh Duy
   email = voanhduy1512@live.com
+	signingkey = 32E318D4
 [filter "lfs"]
   clean = git-lfs clean %f
   smudge = git-lfs smudge %f
