@@ -60,8 +60,21 @@ ensure_tmux_is_running() {
 
 ensure_tmux_is_running
 
-eval "$(fasd --init auto)"
+if [[ -f /usr/local/etc/profile.d/z.sh ]]; then
+  . /usr/local/etc/profile.d/z.sh
+fi
 
-eval "$(direnv hook zsh)"
+if which direnv > /dev/null; then
+  eval "$(direnv hook zsh)"
+fi
 
-eval "$(stack --bash-completion-script stack)"
+load_oc() {
+  if which oc > /dev/null; then
+    source <(oc completion zsh)
+  fi
+
+  if which s2i > /dev/null; then
+    source <(s2i completion zsh)
+  fi
+}
+

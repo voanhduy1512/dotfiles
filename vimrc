@@ -14,12 +14,7 @@ set ignorecase
 set smartcase
 set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
-set hidden
-set ttyfast
-set lazyredraw
 set termguicolors
-set ttimeout
-set ttimeoutlen=100
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -60,12 +55,6 @@ autocmd Filetype help nnoremap <buffer> q :q<CR>
 if has('nvim')
   nmap <BS> <C-W>h
 endif
-" autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-" autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-" autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-" When the type of shell script is /bin/sh, assume a POSIX-compatible
-" shell for syntax highlighting purposes.
-let g:is_posix = 1
 
 " Softtabs, 2 spaces
 set tabstop=2
@@ -92,25 +81,18 @@ if executable('ag')
 endif
 
 " Color scheme
-set background=dark
 colorscheme base16-ocean
 
 " Make it obvious where 80 characters is
 set textwidth=80
 set colorcolumn=+1
 
-" vim tmux runner
-let g:VtrUseVtrMaps = 1
-
-nmap <C-f> :VtrSendLinesToRunner<cr>
-vmap <C-f> <Esc>:VtrSendSelectedToRunner<cr>
-
 " Numbers
 set relativenumber
 set number
-set numberwidth=5
 
 hi CursorLineNr   term=bold ctermfg=180 gui=bold guifg=Yellow
+hi Normal guibg=NONE
 
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
@@ -129,9 +111,6 @@ nnoremap <silent> <Leader>l :TestLast<CR>
 nnoremap <silent> <Leader>a :TestSuite<CR>
 nnoremap <silent> <leader>gt :TestVisit<CR>
 
-" Run commands that require an interactive shell
-nnoremap <Leader>ri :RunInInteractiveShell<space>
-
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
 
@@ -145,12 +124,6 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
-" configure syntastic syntax checking to check on open as well as save
-let g:syntastic_check_on_open=1
-let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
-let g:syntastic_eruby_ruby_quiet_messages =
-      \ {"regex": "possibly useless use of a variable in void context"}
-let g:syntastic_javascript_checkers = ['eslint']
 " Set spellfile to location that is guaranteed to exist, can be symlinked to
 " Dropbox or kept in Git and managed outside of thoughtbot/dotfiles using rcm.
 set spellfile=$HOME/.vim-spell-en.utf-8.add
@@ -160,8 +133,6 @@ set complete+=kspell
 
 " Always use vertical diffs
 set diffopt+=vertical
-
-set rtp+=~/.fzf
 
 " Local config
 if filereadable($HOME . "/.vimrc.local")
@@ -182,19 +153,10 @@ autocmd VimResized * :wincmd =
 " zoom a vim pane, <C-w>= to re-balance
 nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
 nnoremap <leader>= :wincmd =<cr>
-nnoremap { gt<CR>
-nnoremap } gT<CR>
 
 set wildmode=list:longest,list:full
 
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
-
-let g:UltiSnipsUsePythonVersion = 2
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 nnoremap <leader>tb :TagbarToggle<CR>
 
@@ -211,6 +173,7 @@ let g:go_highlight_structs = 1
 let g:go_highlight_interfaces = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
+let g:go_metalinter_autosave = 1
 
 au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
@@ -242,14 +205,12 @@ augroup VimCSS3Syntax
 augroup END
 
 autocmd FileType javascript setlocal omnifunc=tern#Complete
-nnoremap <leader>b :Dispatch bundle<cr>
 
 nmap <leader>vi :sp $MYVIMRC<cr>
 nmap <leader>so :source $MYVIMRC<cr>
 
 nmap k gk
 nmap j gj
-" set regexpengine=1
 
 augroup markdown
   au!
@@ -261,38 +222,32 @@ let g:jsx_ext_required = 0
 command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 nnoremap \ :Ag<SPACE>
 
-set tags+=gems.tags
-
-let g:maximizer_set_default_mapping = 0
-
 if has('nvim')
   nmap <BS> :<C-u>TmuxNavigateLeft<CR>
 else
   nmap <C-h> <C-w>h
 endif
 
-map , <Plug>(easymotion-prefix)
-
-au FileType elm nmap <leader>m <Plug>(elm-make)
-au FileType elm nmap <leader>b <Plug>(elm-make-main)
-au FileType elm nmap <leader>t <Plug>(elm-test)
-au FileType elm nmap <leader>r <Plug>(elm-repl)
-au FileType elm nmap <leader>e <Plug>(elm-error-detail)
-au FileType elm nmap <leader>d <Plug>(elm-show-docs)
-au FileType elm nmap <leader>w <Plug>(elm-browse-docs)
-
-
-let g:ycm_semantic_triggers = {
-      \ 'elm' : ['.'],
-      \}
-
 set t_8f=[38;2;%lu;%lu;%lum  " Needed in tmux
 set t_8b=[48;2;%lu;%lu;%lum  " Ditto
 
-let g:ycm_semantic_triggers = {'haskell' : ['.']}
+" Haskell
 let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
 let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
 let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
 let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
 let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
 let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
+
+let g:necoghc_enable_detailed_browse = 1
+
+"Note: This option must be set in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+

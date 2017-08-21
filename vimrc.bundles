@@ -27,76 +27,64 @@ com! -nargs=+  -bar Bundle call VundleToPlug("Bundle", <args>)
 call plug#begin('~/.vim/bundle')
 
 " Define bundles via Github repos
+Plug 'chriskempson/base16-vim'
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'fatih/vim-go'
+Plug 'ervandew/supertab'
 Plug 'janko-m/vim-test'
-Plug 'kchmck/vim-coffee-script'
-Plug 'pbrisbin/vim-mkdir'
-Plug 'scrooloose/syntastic'
-Plug 'slim-template/vim-slim'
-Plug 'tpope/vim-dispatch'
+Plug 'majutsushi/tagbar'
+Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-projectionist'
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-rake'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-cucumber'
-Plug 'vim-ruby/vim-ruby'
+Plug 'voanhduy1512/nerdtree'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+
+" Powerline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'kana/vim-textobj-user'
-Plug 'nelstrom/vim-textobj-rubyblock'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'christoomey/vim-tmux-runner'
-Plug 'chriskempson/base16-vim'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'fatih/vim-hclfmt'
-Plug 'Valloric/MatchTagAlways'
-Plug 'ervandew/supertab'
-Plug 'majutsushi/tagbar'
-Plug 'mhinz/vim-signify'
-Plug 'voanhduy1512/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'wakatime/vim-wakatime'
+
+" Autocomplete
+Plug 'Shougo/neocomplete.vim'
+
+" Linter
+Plug 'w0rp/ale'
+
+" Markdown
 Plug 'gabrielelana/vim-markdown'
-Plug 'mattn/emmet-vim'
-Plug 'pangloss/vim-javascript'
+Plug 'junegunn/goyo.vim'
+
+" Javascript
+Plug 'flowtype/vim-flow'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'mxw/vim-jsx'
+Plug 'pangloss/vim-javascript'
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
-Plug 'othree/html5.vim'
-Plug 'hail2u/vim-css3-syntax'
-Plug 'cakebaker/scss-syntax.vim'
-Plug 'groenewege/vim-less'
-Plug 'moll/vim-node'
-Plug 'digitaltoad/vim-jade'
+
+" Docker
 Plug 'ekalinin/Dockerfile.vim'
-Plug 'szw/vim-maximizer'
 
-Plug 'hashivim/vim-hashicorp-tools'
-Plug 'b4b4r07/vim-hcl'
-Plug 'fatih/vim-hclfmt'
-
-Plug 'tpope/vim-fireplace'
-Plug 'tpope/vim-salve'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --gocode-completer --tern-completer' }
-
-Plug 'easymotion/vim-easymotion'
-
-Plug 'ElmCast/elm-vim'
-Plug 'vim-scripts/DistractFree'
-
+" Haskell
 Plug 'eagletmt/ghcmod-vim'
 Plug 'eagletmt/neco-ghc'
-Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-Plug 'neovimhaskell/haskell-vim'
 Plug 'hspec/hspec.vim'
+Plug 'neovimhaskell/haskell-vim'
+
+" Go
+Plug 'fatih/vim-go', { 'for': 'go' }
+
+" Ruby
+Plug 'tpope/vim-cucumber'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rake'
+Plug 'vim-ruby/vim-ruby'
 
 
 if filereadable(expand("~/.vimrc.bundles.local"))
