@@ -44,9 +44,6 @@ _load_settings() {
 
 _load_settings "$HOME/.zsh/configs"
 
-# Local config
-[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
-
 if [[ -f /usr/local/etc/profile.d/z.sh ]]; then
   . /usr/local/etc/profile.d/z.sh
 fi
@@ -59,3 +56,5 @@ fi
 [[ -f ~/.aliases ]] && source ~/.aliases
 
 [[ -f ~/.profile ]] && source ~/.profile
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

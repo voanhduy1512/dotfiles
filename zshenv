@@ -7,7 +7,7 @@ export EDITOR=vim
 export GOPATH="$HOME/go"
 export PATH="$HOME/.local/bin:$HOME/.bin:/usr/local/bin:$PATH"
 export PATH="$PATH:$GOPATH/bin"
-
+export DEFAULT_USER=`whoami`
 # --files: List files that would be searched but do not search
 # # --no-ignore: Do not respect .gitignore, etc...
 # # --hidden: Search hidden files and folders
@@ -15,4 +15,5 @@ export PATH="$PATH:$GOPATH/bin"
 # # --glob: Additional conditions for search (in this case ignore everything in
 # the .git/ folder)
 #
-export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+export FZF_DEFAULT_COMMAND='fd --type f'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
