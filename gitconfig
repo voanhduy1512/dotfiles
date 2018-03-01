@@ -18,6 +18,7 @@
   pager = diff-highlight | less -RFX
 [merge]
   ff = only
+  conflictstyle = diff3
 [commit]
   template = ~/.gitmessage
 [fetch]
@@ -27,8 +28,8 @@
 [include]
   path = ~/.gitconfig.local
 [user]
-	name = Võ Anh Duy
-	email = voanhduy1512@live.com
+  name = Võ Anh Duy
+  email = voanhduy1512@live.com
 [filter "lfs"]
   required = true
   clean = git-lfs clean -- %f
@@ -36,3 +37,6 @@
 [diff]
   algorithm = minimal
   compactionHeuristic = true
+  tool = vimdiff
+[credential]
+  helper = osxkeychain

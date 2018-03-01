@@ -1,0 +1,12 @@
+[submodule "vim/pack/anhduy/start/nord-vim"]
+	path = vim/pack/anhduy/start/nord-vim
+	url = https://github.com/arcticicestudio/nord-vim
+[submodule "vim/pack/anhduy/start/nerdtree"]
+	path = vim/pack/anhduy/start/nerdtree
+	url = https://github.com/scrooloose/nerdtree
+[submodule "vim/pack/anhduy/start/fzf"]
+	path = vim/pack/anhduy/start/fzf
+	url = https://github.com/junegunn/fzf
+[submodule "vim/pack/anhduy/start/fzf.vim"]
+	path = vim/pack/anhduy/start/fzf.vim
+	url = https://github.com/junegunn/fzf.vim

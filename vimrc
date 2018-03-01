@@ -1,37 +1,68 @@
 " Leader
 let mapleader = " "
 
-set backspace=2   " Backspace deletes like most programs in insert mode
+filetype plugin indent on
+syntax on
+
+set autoindent
+set backspace=indent,eol,start
+set complete-=i
+set smarttab
+
+set incsearch
+set hlsearch
+
+set laststatus=2
+set ruler
+set wildmenu
+
 set nobackup
 set nowritebackup
-set noswapfile    " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
-set history=1000
-set ruler         " show the cursor position all the time
-set showcmd       " display incomplete commands
-set incsearch     " do incremental searching
-set hlsearch      " highlight all matches
+set noswapfile
 set ignorecase
 set smartcase
-set laststatus=2  " Always display the status line
-set autowrite     " Automatically :write before running commands
+
+set tabstop=2
+set shiftwidth=2
+set shiftround
+set expandtab
 set termguicolors
 
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
-  syntax on
-endif
+set wildmode=list:longest,list:full
+" Display extra whitespace
+set list listchars=tab:»·,trail:·,nbsp:·
 
-if filereadable(expand("~/.vimrc.bundles"))
-  source ~/.vimrc.bundles
-endif
+set nojoinspaces
 
-" Load matchit.vim, but only if the user hasn't installed a newer version.
-if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
-  runtime! macros/matchit.vim
-endif
+colorscheme nord
 
-filetype plugin indent on
+" Make it obvious where 80 characters is
+set textwidth=80
+set colorcolumn=+1
+
+set relativenumber
+set number
+
+" Open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
+
+nmap k gk
+nmap j gj
+
+nmap <leader>vi :sp $MYVIMRC<cr>
+nmap <leader>so :source $MYVIMRC<cr>
+
+" shortcut
+map <Leader>p :set paste<CR>"*]p:set nopaste<cr>
+map <Leader>y "*y
+map <Leader>h :nohlsearch<cr>
+
+" Quicker window movement
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
 
 augroup vimrcEx
   autocmd!
@@ -43,107 +74,32 @@ augroup vimrcEx
         \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
         \   exe "normal g`\"" |
         \ endif
+augroup END
 
-  " Set syntax highlighting for specific file types
-  autocmd BufRead,BufNewFile Appraisals set filetype=ruby
-  autocmd BufRead,BufNewFile *.md set filetype=markdown
+augroup JS
+  autocmd!
+
   autocmd BufRead,BufNewFile .{jscs,jshint,eslint}rc set filetype=json
+augroup END
 
-  " ALE linting events
-  if g:has_async
-    set updatetime=1000
-    let g:ale_lint_on_text_changed = 0
-    autocmd CursorHold * call ale#Lint()
-    autocmd CursorHoldI * call ale#Lint()
-    autocmd InsertEnter * call ale#Lint()
-    autocmd InsertLeave * call ale#Lint()
-  else
-    echoerr "The thoughtbot dotfiles require NeoVim or Vim 8"
-  endif
+augroup VimCSS3Syntax
+  autocmd!
+
+  autocmd FileType css setlocal iskeyword+=-
+augroup END
+
+augroup markdown
+  autocmd!
+  autocmd BufNewFile,BufRead *.md,*.markdown setlocal filetype=markdown
 augroup END
 
 autocmd Filetype help nnoremap <buffer> q :q<CR>
 
 if has('nvim')
-  nmap <BS> <C-W>h
+  nmap <BS> :<C-u>TmuxNavigateLeft<CR>
+else
+  nmap <C-h> <C-w>h
 endif
-
-" Softtabs, 2 spaces
-set tabstop=2
-set shiftwidth=2
-set shiftround
-set expandtab
-
-" Display extra whitespace
-set list listchars=tab:»·,trail:·,nbsp:·
-
-" Use one space, not two, after punctuation.
-set nojoinspaces
-
-" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
-if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag -Q -l --nocolor --hidden -g "" %s'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-
-  if !exists(":Ag")
-    command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-    nnoremap \ :Ag<SPACE>
-  endif
-endif
-
-" Color scheme
-colorscheme base16-ocean
-
-" Make it obvious where 80 characters is
-set textwidth=80
-set colorcolumn=+1
-
-" Numbers
-set relativenumber
-set number
-
-hi CursorLineNr   term=bold ctermfg=180 gui=bold guifg=Yellow
-hi Normal guibg=NONE
-
-" Switch between the last two files
-nnoremap <Leader><Leader> <c-^>
-
-" Get off my lawn
-nnoremap <Left> :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up> :echoe "Use k"<CR>
-nnoremap <Down> :echoe "Use j"<CR>
-
-" vim-test mappings
-let test#strategy = "dispatch"
-nnoremap <silent> <Leader>t :TestFile<CR>
-nnoremap <silent> <Leader>s :TestNearest<CR>
-nnoremap <silent> <Leader>l :TestLast<CR>
-nnoremap <silent> <Leader>a :TestSuite<CR>
-nnoremap <silent> <Leader>gt :TestVisit<CR>
-
-" Treat <li> and <p> tags like the block tags they are
-let g:html_indent_tags = 'li\|p'
-
-" Open new split panes to right and bottom, which feels more natural
-set splitbelow
-set splitright
-
-" Quicker window movement
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
-
-" Move between linting errors
-nnoremap ]r :ALENextWrap<CR>
-nnoremap [r :ALEPreviousWrap<CR>
 
 " Set spellfile to location that is guaranteed to exist, can be symlinked to
 " Dropbox or kept in Git and managed outside of thoughtbot/dotfiles using rcm.
@@ -155,31 +111,12 @@ set complete+=kspell
 " Always use vertical diffs
 set diffopt+=vertical
 
-" Local config
-if filereadable($HOME . "/.vimrc.local")
-  source ~/.vimrc.local
-endif
-
-" airline
-let g:airline_powerline_fonts = 1
-
-" shortcut
-map <Leader>p :set paste<CR>"*]p:set nopaste<cr>
-map <Leader>y "*y
-map <Leader>h :nohlsearch<cr>
-
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
 
 " zoom a vim pane, <C-w>= to re-balance
 nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
 nnoremap <leader>= :wincmd =<cr>
-
-set wildmode=list:longest,list:full
-
-let g:SuperTabDefaultCompletionType = '<C-n>'
-
-nnoremap <leader>tb :TagbarToggle<CR>
 
 " Go
 let g:go_dispatch_enabled = 1
@@ -213,41 +150,14 @@ au FileType go nmap <leader>rt <Plug>(go-run-tab)
 au FileType go nmap <Leader>rs <Plug>(go-run-split)
 au FileType go nmap <Leader>rv <Plug>(go-run-vertical)
 
+" NERDTREE
 map <leader>n :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " close vim if it's the only window left
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-augroup VimCSS3Syntax
-  autocmd!
-
-  autocmd FileType css setlocal iskeyword+=-
-augroup END
-
-
-nmap <leader>vi :sp $MYVIMRC<cr>
-nmap <leader>so :source $MYVIMRC<cr>
-
-nmap k gk
-nmap j gj
-
-augroup markdown
-  au!
-  au BufNewFile,BufRead *.md,*.markdown setlocal filetype=markdown
-augroup END
-
-let g:jsx_ext_required = 0
-
-command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-nnoremap \ :Ag<SPACE>
-
-if has('nvim')
-  nmap <BS> :<C-u>TmuxNavigateLeft<CR>
-else
-  nmap <C-h> <C-w>h
-endif
-
+" Stupid tmux and vim 8 true color hack
 set t_8f=[38;2;%lu;%lu;%lum  " Needed in tmux
 set t_8b=[48;2;%lu;%lu;%lum  " Ditto
 
@@ -260,37 +170,34 @@ let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
 let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
 let g:necoghc_enable_detailed_browse = 1
 
-"Note: This option must be set in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-
 let g:airline#extensions#ale#enabled = 1
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
-" Only use eslint and flow for javascript
-let g:ale_linters = {
-      \   'javascript': ['eslint', 'flow'],
-      \}
+let g:ale_lint_on_text_changed = 'never'
+nmap ,f :ALEFix<cr>
+nmap ,d :ALEDetail<cr>
 
-" Use tern for autocomplete
-autocmd FileType javascript setlocal omnifunc=tern#Complete
+map <silent> tw :GhcModTypeInsert<CR>
+map <silent> ts :GhcModSplitFunCase<CR>
+map <silent> tq :GhcModType<CR>
+map <silent> te :GhcModTypeClear<CR>
 
-let g:flow#showquickfix = 0
-let g:javascript_plugin_flow = 1
+nnoremap ]r :ALENextWrap<CR>
+nnoremap [r :ALEPreviousWrap<CR>
 
-"Use locally installed flow
-let local_flow = finddir('node_modules', '.;') . '/.bin/flow'
-if matchstr(local_flow, "^\/\\w") == ''
-    let local_flow= getcwd() . "/" . local_flow
-endif
-if executable(local_flow)
-  let g:flow#flowpath = local_flow
-endif
+nmap <c-p> :Files<cr>
+
+" --column: Show column number
+"  " --line-number: Show line number
+"  " --no-heading: Do not show file headings in results
+"  " --fixed-strings: Search term as a literal string
+"  " --ignore-case: Case insensitive search
+"  " --no-ignore: Do not respect .gitignore, etc...
+"  " --hidden: Search hidden files and folders
+"  " --follow: Follow symlinks
+"  " --glob: Additional conditions for search (in this case ignore everything in
+"  the .git/ folder)
+"  " --color: Search color options
+"

@@ -47,16 +47,6 @@ _load_settings "$HOME/.zsh/configs"
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
-_not_inside_tmux() { [[ -z "$TMUX" ]] }
-
-ensure_tmux_is_running() {
-  if _not_inside_tmux; then
-    tat
-  fi
-}
-
-ensure_tmux_is_running
-
 if [[ -f /usr/local/etc/profile.d/z.sh ]]; then
   . /usr/local/etc/profile.d/z.sh
 fi
@@ -65,15 +55,7 @@ if which direnv > /dev/null; then
   eval "$(direnv hook zsh)"
 fi
 
-load_oc() {
-  if which oc > /dev/null; then
-    source <(oc completion zsh)
-  fi
-
-  if which s2i > /dev/null; then
-    source <(s2i completion zsh)
-  fi
-}
-
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
+
+[[ -f ~/.profile ]] && source ~/.profile
