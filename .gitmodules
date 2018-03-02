@@ -10,3 +10,33 @@
 [submodule "vim/pack/anhduy/start/fzf.vim"]
 	path = vim/pack/anhduy/start/fzf.vim
 	url = https://github.com/junegunn/fzf.vim
+[submodule "vim/pack/anhduy/start/ale"]
+	path = vim/pack/anhduy/start/ale
+	url = https://github.com/w0rp/ale
+[submodule "vim/pack/anhduy/start/vimproc.vim"]
+	path = vim/pack/anhduy/start/vimproc.vim
+	url = https://github.com/Shougo/vimproc.vim
+[submodule "vim/pack/anhduy/start/vim-fugitive"]
+	path = vim/pack/anhduy/start/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
+[submodule "vim/pack/anhduy/start/tagbar"]
+	path = vim/pack/anhduy/start/tagbar
+	url = https://github.com/majutsushi/tagbar
+[submodule "vim/pack/anhduy/start/vim-commentary"]
+	path = vim/pack/anhduy/start/vim-commentary
+	url = https://github.com/tpope/vim-commentary
+[submodule "vim/pack/anhduy/start/vim-tmux-navigator"]
+	path = vim/pack/anhduy/start/vim-tmux-navigator
+	url = https://github.com/christoomey/vim-tmux-navigator
+[submodule "vim/pack/anhduy/start/haskell-vim"]
+	path = vim/pack/anhduy/start/haskell-vim
+	url = https://github.com/neovimhaskell/haskell-vim
+[submodule "vim/pack/anhduy/start/ghcmod-vim"]
+	path = vim/pack/anhduy/start/ghcmod-vim
+	url = https://github.com/eagletmt/ghcmod-vim
+[submodule "vim/pack/anhduy/start/neco-ghc"]
+	path = vim/pack/anhduy/start/neco-ghc
+	url = https://github.com/eagletmt/neco-ghc
+[submodule "vim/pack/anhduy/start/vim-hoogle"]
+	path = vim/pack/anhduy/start/vim-hoogle
+	url = https://github.com/Twinside/vim-hoogle
